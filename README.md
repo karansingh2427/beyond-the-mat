@@ -44,4 +44,4 @@ SVG mark + wordmark live in `public/beyond-the-mat-mark.svg` and `public/beyond-
 
 ## Out of scope (this slice)
 
-Auth, database, live Continuity cohorts/events/graph, Tummee-scale library, live CV, payments, native App Store builds, unlicensed commercial mantra albums.
+Auth, database, live Continuity cohorts/events/graph, encyclopedia-scale pose libraries, live CV, payments, native App Store builds, unlicensed commercial mantra albums.

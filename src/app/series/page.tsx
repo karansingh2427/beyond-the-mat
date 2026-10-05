@@ -36,7 +36,7 @@ export default async function SeriesPage({
       <PageIntro
         eyebrow="Practice spine"
         title={meta.label}
-        description={`${meta.description} Series → posture → anatomy & alignment. Expandable subsets — not a Tummee-scale dump.`}
+        description={`${meta.description} Series → posture → anatomy & alignment. Expandable subsets — craft and rationale over a pose dump.`}
       />
 
       <SeriesTabs active={seriesId} />

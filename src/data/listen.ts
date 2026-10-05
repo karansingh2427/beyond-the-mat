@@ -6,10 +6,9 @@ export type ListenTrack = {
   transliteration: string;
   meaningNote: string;
   durationLabel: string;
-  /** null = placeholder until rights-cleared Vedic recitation is plugged in */
-  audioSrc: string | null;
+  audioSrc: string;
   attribution: {
-    status: "placeholder" | "rights-cleared";
+    status: "demo" | "rights-cleared";
     reciterSlot: string;
     traditionSlot: string;
     rightsNote: string;
@@ -18,8 +17,8 @@ export type ListenTrack = {
 };
 
 /**
- * Vedic Listen catalog — UX + pedagogy first.
- * No commercial mantra albums. Audio slots await ritual-correct, rights-cleared recitation.
+ * Vedic Listen catalog — real files in /public/audio.
+ * No commercial mantra albums. Demos labeled honestly until pandit Vedic-svara ships.
  */
 export const listenTracks: ListenTrack[] = [
   {
@@ -30,19 +29,19 @@ export const listenTracks: ListenTrack[] = [
     transliteration: "yogaś citta-vṛtti-nirodhaḥ",
     meaningNote:
       "A working sense: yoga is the stilling of the fluctuations of mind-stuff — study a full commentary (e.g. Bryant) for nuance. We keep translation light and point you to sources.",
-    durationLabel: "~0:45 (when sourced)",
-    audioSrc: null,
+    durationLabel: "~0:06 · demo",
+    audioSrc: "/audio/ys-1-2-demo.m4a",
     attribution: {
-      status: "placeholder",
-      reciterSlot: "Traditional Vedic / pandit reciter — TBD",
-      traditionSlot: "Śākhā / chanting lineage — TBD",
+      status: "demo",
+      reciterSlot: "Beyond the Mat demo recitation (TTS) — pandit source TBD",
+      traditionSlot: "Spoken Sanskrit study aid — not ritual Vedic svara",
       rightsNote:
-        "Placeholder player. Beyond the Mat will only attach ritual-correct Vedic intonation recordings with clear rights and attribution — never generic new-age chant albums.",
+        "Original demo recording for this app. Ritual-correct Vedic intonation will replace this when rights-cleared.",
     },
     pedagogy: [
-      "Sit tall. Listen for pitch contour — Vedic recitation carries svara (intonation), not a pop melody.",
-      "Do not treat this as background spa sound. Follow the syllables; notice attention.",
-      "If the player is still a placeholder, read the transliteration aloud slowly after hearing a teacher’s traditional form when you can.",
+      "Sit tall. Listen for syllable shapes — this demo is study speech, not Vedic pitch accent.",
+      "Do not treat sacred Listen as background spa sound. Follow the syllables; notice attention.",
+      "Seek a living teacher’s traditional form when you can; this card keeps the text audible in the meantime.",
     ],
   },
   {
@@ -53,14 +52,14 @@ export const listenTracks: ListenTrack[] = [
     transliteration: "sthira-sukham āsanam",
     meaningNote:
       "The seat/posture is steady and easeful — the spine of Beyond the Mat’s āsana philosophy module.",
-    durationLabel: "~0:40 (when sourced)",
-    audioSrc: null,
+    durationLabel: "~0:05 · demo",
+    audioSrc: "/audio/ys-2-46-demo.m4a",
     attribution: {
-      status: "placeholder",
-      reciterSlot: "Traditional Vedic / pandit reciter — TBD",
-      traditionSlot: "Śākhā / chanting lineage — TBD",
+      status: "demo",
+      reciterSlot: "Beyond the Mat demo recitation (TTS) — pandit source TBD",
+      traditionSlot: "Spoken Sanskrit study aid — not ritual Vedic svara",
       rightsNote:
-        "Awaiting licensed or otherwise rights-cleared ritual recitation. Will not substitute ambient Om loops.",
+        "Original demo recording. Demo recitation — ritual-correct pandit source TBD.",
     },
     pedagogy: [
       "Hear steadiness and ease as qualities in the sound — unhurried, exact.",
@@ -69,24 +68,25 @@ export const listenTracks: ListenTrack[] = [
   },
   {
     id: "gayatri-short",
-    title: "Gāyatrī (short form slot)",
+    title: "Gāyatrī (short form)",
     category: "mantra",
     textRef: "Gāyatrī mantra — traditional Vedic",
-    transliteration: "oṃ bhūr bhuvaḥ svaḥ … (full line via your teacher / rights-cleared source)",
+    transliteration:
+      "oṃ bhūr bhuvaḥ svaḥ · tat savitur vareṇyaṃ · bhargo devasya dhīmahi · dhiyo yo naḥ pracodayāt",
     meaningNote:
-      "We do not print a casual pop transliteration as “good enough.” Mantra study belongs with correct transmission and intonation.",
-    durationLabel: "~1:30 (when sourced)",
-    audioSrc: null,
+      "Mantra study belongs with correct transmission and intonation. This recording is a rights-cleared traditional-style recitation for study — not a commercial “meditation chant” album.",
+    durationLabel: "~0:22",
+    audioSrc: "/audio/gayatri.m4a",
     attribution: {
-      status: "placeholder",
-      reciterSlot: "Authorized Vedic reciter — TBD",
-      traditionSlot: "Traditional Vedic ritual chanting — TBD",
+      status: "rights-cleared",
+      reciterSlot: "Rameshvar (Wikimedia Commons)",
+      traditionSlot: "Traditional-style Gāyatrī recitation",
       rightsNote:
-        "Mantra audio will only ship when properly sourced. No commercial “meditation chant” album stand-ins.",
+        "Source: Wikimedia Commons “Gayatri Mantra as it is” — Free Art License. Converted to AAC for browser playback. Prefer your teacher’s lineage form when you have it.",
     },
     pedagogy: [
       "Vedic mantra is ritual speech. Intonation is part of correct form — like alignment in āsana.",
-      "Until audio is attached, use this card to learn *why* sourcing matters, then seek a living teacher’s recitation.",
+      "Use this for familiarization; deepen with a living teacher’s transmission.",
     ],
   },
   {
@@ -94,21 +94,22 @@ export const listenTracks: ListenTrack[] = [
     title: "Opening invocation (Ashtanga context)",
     category: "mantra",
     textRef: "Traditional opening chant used in many Ashtanga rooms",
-    transliteration: "Study with your shala’s taught form; we do not invent a studio remix.",
+    transliteration:
+      "vande gurūṇāṃ caraṇāravinde … (study the full form with your shala)",
     meaningNote:
-      "Many Mysore rooms open with a traditional invocation. Beyond the Mat’s job is correct sound sourcing and respect — not a new-age cover.",
-    durationLabel: "~2:00 (when sourced)",
-    audioSrc: null,
+      "Many Mysore rooms open with a traditional invocation. Beyond the Mat’s job is respect and clear sourcing — not a studio remix.",
+    durationLabel: "~0:06 · demo",
+    audioSrc: "/audio/invocation-demo.m4a",
     attribution: {
-      status: "placeholder",
-      reciterSlot: "Lineage-appropriate reciter — TBD",
-      traditionSlot: "As taught in your lineage / shala — TBD",
+      status: "demo",
+      reciterSlot: "Beyond the Mat demo recitation (TTS) — lineage form TBD",
+      traditionSlot: "As taught in your lineage / shala — prefer that transmission",
       rightsNote:
-        "Placeholder with attribution slots for a rights-cleared traditional recording.",
+        "Original demo snippet only. Demo recitation — ritual-correct pandit / shala source TBD. Privilege your shala’s taught form.",
     },
     pedagogy: [
       "If your shala teaches an opening chant, privilege that transmission.",
-      "Use this Listen slot for home study only with properly attributed audio once available.",
+      "Use this Listen slot for home familiarization until a properly attributed traditional recording is attached.",
     ],
   },
 ];
@@ -121,9 +122,9 @@ export const vedicListenExplainer = {
     "Playlist music that accompanies breathwork is a different job. Sacred Listen is text-and-ritual sound.",
   ],
   sourcingStandard: [
-    "Ritual-correct Vedic / traditional pandit recitation",
+    "Ritual-correct Vedic / traditional pandit recitation when available",
     "Clear attribution: reciter, tradition/śākhā, rights",
     "No unlicensed commercial mantra albums",
-    "Placeholders stay labeled until audio is real",
+    "Demos stay labeled until ritual-correct audio replaces them",
   ],
 };

@@ -59,7 +59,11 @@ export function ContinuityPreview() {
         ))}
       </ol>
 
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      {/*
+        Explicit two-column from md up. Avoid fragile fr templates that can
+        collapse to a single full-width dashed box with empty right space.
+      */}
+      <section className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
         <div className="rounded-xl border border-dashed border-copper/40 bg-mist/50 p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="outline">Continuity preview</Badge>
@@ -70,7 +74,8 @@ export function ContinuityPreview() {
           </h2>
           <p className="mt-3 max-w-xl text-muted-foreground">
             Full cohorts, teacher office hours, practice graph, and events
-            discovery stay <strong className="font-medium text-foreground">post-v1</strong>.
+            discovery stay{" "}
+            <strong className="font-medium text-foreground">post-v1</strong>.
             This surface tells the story now so Beyond the Mat never reads as
             solitary fitness software — community is Continuity on real practice,
             not another social feed.
@@ -78,7 +83,9 @@ export function ContinuityPreview() {
           <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
             <li>• Cohorts anchored to Series, Philosophy, and Breath objects</li>
             <li>• Teacher check-ins as scarce, scheduled craft</li>
-            <li>• Events later via trusted graph proximity — not cold SEO marketplace</li>
+            <li>
+              • Events later via trusted graph proximity — not cold SEO marketplace
+            </li>
           </ul>
         </div>
 
@@ -100,7 +107,9 @@ export function ContinuityPreview() {
             </p>
             <p className="font-display mt-3 text-2xl">{card.title}</p>
             <p className="mt-2 text-sm text-primary-foreground/80">{card.line}</p>
-            <p className="mt-4 text-xs text-primary-foreground/60">{card.series}</p>
+            <p className="mt-4 text-xs text-primary-foreground/60">
+              {card.series}
+            </p>
           </article>
 
           <button
@@ -119,7 +128,8 @@ export function ContinuityPreview() {
             {shared ? "Card copied — send to a fellow" : "Copy shareable card"}
           </button>
           <p className="mt-2 text-xs text-muted-foreground">
-            Preview only for cohorts &amp; events — this copy action is the v1 toe-hold.
+            Preview only for cohorts &amp; events — this copy action is the v1
+            toe-hold.
           </p>
         </div>
       </section>

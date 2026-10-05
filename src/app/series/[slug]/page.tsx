@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { PostureFigure } from "@/components/posture-figure";
 import {
   allPostures,
   getPosture,
@@ -40,7 +41,7 @@ export default async function PosturePage({
       : "/series";
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
       <Link
         href={seriesHref}
         className="text-sm text-muted-foreground hover:text-foreground"
@@ -48,59 +49,70 @@ export default async function PosturePage({
         ← {series.label}
       </Link>
 
-      <div className="mt-6 animate-rise">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge>{series.shortLabel}</Badge>
-          <Badge variant="secondary">{posture.section}</Badge>
-          <Badge variant="outline">#{posture.order}</Badge>
+      <div className="mt-6 grid items-start gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+        <div className="animate-rise min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge>{series.shortLabel}</Badge>
+            <Badge variant="secondary">{posture.section}</Badge>
+            <Badge variant="outline">#{posture.order}</Badge>
+          </div>
+          <h1 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
+            {posture.sanskrit}
+          </h1>
+          <p className="mt-2 text-lg text-muted-foreground">
+            {posture.english}
+          </p>
+
+          <div className="mt-10 grid gap-8 sm:grid-cols-2">
+            <section>
+              <h2 className="text-xs uppercase tracking-[0.18em] text-copper">
+                Stabilize
+              </h2>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                {posture.stabilize.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h2 className="text-xs uppercase tracking-[0.18em] text-copper">
+                Move
+              </h2>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                {posture.move.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+
+          <section className="mt-10">
+            <h2 className="font-display text-2xl text-ink">Focus</h2>
+            <p className="mt-2 text-muted-foreground">
+              {posture.focus.join(" · ")}
+            </p>
+          </section>
+
+          <section className="mt-8 rounded-xl border border-border/80 bg-card/70 p-5">
+            <h2 className="font-display text-2xl text-ink">Alignment points</h2>
+            <ul className="mt-4 space-y-3">
+              {posture.alignmentPoints.map((a) => (
+                <li key={a.id} className="border-l-2 border-copper/60 pl-3">
+                  <p className="font-medium">{a.label}</p>
+                  <p className="text-sm text-muted-foreground">{a.hint}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
-        <h1 className="font-display mt-3 text-4xl text-ink sm:text-5xl">
-          {posture.sanskrit}
-        </h1>
-        <p className="mt-2 text-lg text-muted-foreground">{posture.english}</p>
+
+        <PostureFigure
+          posture={posture}
+          className="animate-rise-delay lg:sticky lg:top-24"
+        />
       </div>
 
-      <div className="mt-10 grid gap-8 sm:grid-cols-2">
-        <section>
-          <h2 className="text-xs uppercase tracking-[0.18em] text-copper">
-            Stabilize
-          </h2>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
-            {posture.stabilize.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
-        </section>
-        <section>
-          <h2 className="text-xs uppercase tracking-[0.18em] text-copper">
-            Move
-          </h2>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
-            {posture.move.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
-
-      <section className="mt-10">
-        <h2 className="font-display text-2xl text-ink">Focus</h2>
-        <p className="mt-2 text-muted-foreground">{posture.focus.join(" · ")}</p>
-      </section>
-
-      <section className="mt-8 rounded-xl border border-border/80 bg-card/70 p-5">
-        <h2 className="font-display text-2xl text-ink">Alignment points</h2>
-        <ul className="mt-4 space-y-3">
-          {posture.alignmentPoints.map((a) => (
-            <li key={a.id} className="border-l-2 border-copper/60 pl-3">
-              <p className="font-medium">{a.label}</p>
-              <p className="text-sm text-muted-foreground">{a.hint}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="mt-8 grid gap-6 sm:grid-cols-2">
+      <section className="mt-10 grid gap-6 sm:grid-cols-2">
         <div>
           <h2 className="text-xs uppercase tracking-[0.18em] text-copper">
             Common compensations
@@ -150,8 +162,8 @@ export default async function PosturePage({
       <section className="mt-8 rounded-lg bg-mist/80 p-4 text-sm">
         <p className="font-medium">Influences / further study</p>
         <p className="mt-1 text-muted-foreground">
-          {posture.influences.join(" · ")}. Original Beyond the Mat teaching copy —
-          modern books are named, not reproduced.
+          {posture.influences.join(" · ")}. Original Beyond the Mat teaching
+          copy — modern books are named, not reproduced.
         </p>
       </section>
 
