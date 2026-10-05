@@ -126,7 +126,10 @@ export function ClassDesigner() {
       </div>
 
       <div ref={resultsRef} className="min-h-[320px] scroll-mt-24">
-        <div className="animate-rise space-y-6 rounded-xl border border-border/80 bg-card/80 p-6">
+        <div
+          key={`${bodyFocus}-${intention}-${contraindication}`}
+          className="animate-rise space-y-6 rounded-xl border border-border/80 bg-card/80 p-6"
+        >
           <header>
             <p className="text-xs uppercase tracking-[0.18em] text-copper">
               {outline.durationLabel}
@@ -140,14 +143,14 @@ export function ClassDesigner() {
           </header>
 
           {outline.sections.map((section) => (
-            <section key={section.name}>
+            <section key={`${intention}-${section.name}`}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-primary">
                 {section.name}
               </h3>
               <ul className="mt-3 space-y-3">
-                {section.items.map((item) => (
+                {section.items.map((item, idx) => (
                   <li
-                    key={item.pose}
+                    key={`${intention}-${section.name}-${idx}-${item.pose}`}
                     className="border-l-2 border-copper/50 pl-3"
                   >
                     <p className="font-medium text-foreground">{item.pose}</p>
