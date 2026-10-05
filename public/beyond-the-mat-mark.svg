@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="btmTitle">
+  <title id="btmTitle">Beyond the Mat</title>
+  <!-- Mat plane -->
+  <rect x="10" y="38" width="44" height="8" rx="1.5" fill="currentColor" opacity="0.92"/>
+  <rect x="12" y="40" width="40" height="1.2" fill="currentColor" opacity="0.25"/>
+  <!-- Rising doorway / practice path beyond the mat -->
+  <path d="M32 10v28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+  <path d="M22 36c0-10 4.5-18 10-22 5.5 4 10 12 10 22" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <!-- Soft apex mark -->
+  <circle cx="32" cy="12" r="2.4" fill="currentColor"/>
+</svg>
